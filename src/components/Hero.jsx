@@ -1,24 +1,45 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download, Volume2, VolumeX } from 'lucide-react';
 import resumeFile from './Rajani_Resume_FS.pdf';
 import webVideo from './webvideo.mp4';
 
 const Hero = () => {
+    const [isMuted, setIsMuted] = useState(true);
+    const videoRef = useRef(null);
+
+    const toggleMute = () => {
+        setIsMuted(!isMuted);
+        if (videoRef.current) {
+            videoRef.current.muted = !isMuted;
+        }
+    };
+
     return (
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-16">
             {/* Video Background */}
             <video
+                ref={videoRef}
                 autoPlay
                 loop
+                muted={isMuted}
                 playsInline
                 className="absolute top-0 left-0 w-full h-full object-cover z-0"
             >
                 <source src={webVideo} type="video/mp4" />
             </video>
+
+            {/* Mute Toggle Button */}
+            <button 
+                onClick={toggleMute}
+                className="absolute bottom-8 right-8 z-50 p-3 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 transition-all cursor-pointer"
+                aria-label="Toggle mute"
+            >
+                {isMuted ? <VolumeX className="w-6 h-6 text-zinc-400" /> : <Volume2 className="w-6 h-6 text-white" />}
+            </button>
             
             {/* Gradient Overlay to ensure text readability on left while highlighting video on right */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-0 backdrop-blur-[1px]"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-0 backdrop-blur-[1px] pointer-events-none"></div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center h-full w-full">
                 <motion.div
