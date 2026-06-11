@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -7,10 +8,25 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import StarCursor from './components/StarCursor';
+import Preloader from './components/Preloader';
 
 function App() {
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        if (isLoading) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isLoading]);
+
     return (
         <div className="bg-zinc-950 min-h-screen text-white font-sans selection:bg-primary/30">
+            <AnimatePresence mode="wait">
+                {isLoading && <Preloader key="preloader" onLoadingComplete={() => setIsLoading(false)} />}
+            </AnimatePresence>
+
             <StarCursor />
             <Navbar />
             <main>
