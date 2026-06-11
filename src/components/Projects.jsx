@@ -31,7 +31,7 @@ const Projects = () => {
     ];
 
     return (
-        <section id="projects" className="py-20 bg-white">
+        <section id="projects" className="py-20 bg-zinc-950">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -40,7 +40,7 @@ const Projects = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Featured Projects</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Featured Projects</h2>
                     <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
                 </motion.div>
 
@@ -52,7 +52,7 @@ const Projects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-slate-100"
+                            className="bg-zinc-900 border border-white/5 rounded-xl shadow-lg overflow-hidden hover:shadow-[0_0_20px_rgba(14,165,233,0.1)] transition-all duration-300"
                         >
                             <div className="h-48 overflow-hidden">
                                 <img
@@ -62,20 +62,20 @@ const Projects = () => {
                                 />
                             </div>
                             <div className="p-6">
-                                <h3 className="text-xl font-bold text-slate-900 mb-2">{project.title}</h3>
-                                <p className="text-slate-600 mb-4 text-sm line-clamp-3">{project.description}</p>
+                                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                                <p className="text-zinc-400 mb-4 text-sm line-clamp-3">{project.description}</p>
                                 <div className="flex flex-wrap gap-2 mb-6">
                                     {project.tags.map((tag) => (
-                                        <span key={tag} className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">
+                                        <span key={tag} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
                                 <div className="flex gap-4">
-                                    <a href={project.github} className="flex items-center text-slate-600 hover:text-primary transition-colors text-sm font-medium">
+                                    <a href={project.github} className="flex items-center text-zinc-400 hover:text-primary transition-colors text-sm font-medium">
                                         <Github className="w-4 h-4 mr-1" /> Code
                                     </a>
-                                    <a href={project.demo} className="flex items-center text-slate-600 hover:text-primary transition-colors text-sm font-medium">
+                                    <a href={project.demo} className="flex items-center text-zinc-400 hover:text-primary transition-colors text-sm font-medium">
                                         <ExternalLink className="w-4 h-4 mr-1" /> Live Demo
                                     </a>
                                 </div>

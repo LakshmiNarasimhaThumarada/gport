@@ -7,9 +7,9 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: '#3b82f6', // Blue-500
-                secondary: '#1e293b', // Slate-800
-                accent: '#8b5cf6', // Violet-500
+                primary: '#0ea5e9', // Sky-500 (Neon Blue)
+                secondary: '#09090b', // Zinc-950 (Dark background)
+                accent: '#a855f7', // Purple-500 (Neon Purple)
             },
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
