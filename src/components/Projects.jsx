@@ -1,38 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, FolderGit2 } from 'lucide-react';
 
 const Projects = () => {
     const projects = [
         {
-            title: 'E-Commerce Platform',
-            description: 'A full-featured e-commerce application built with React and Spring Boot. Features include user authentication, product catalog, shopping cart, and payment integration.',
-            tags: ['React', 'Spring Boot', 'MySQL', 'Tailwind'],
-            image: 'https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80',
+            title: 'Portfolio website',
+            description: 'Developed a fully responsive portfolio website showcasing projects, technical skills, and achievements. Improved page performance by 40% through optimized React rendering and asset compression techniques. Implemented smooth animations, mobile-first layouts, and integrated GitHub, LinkedIn, and resume download features.',
+            tags: ['ReactJS', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
             github: '#',
             demo: '#'
         },
         {
-            title: 'Task Management App',
-            description: 'A collaborative task management tool with real-time updates. Users can create boards, lists, and cards to organize their work efficiently.',
-            tags: ['React', 'Firebase', 'Tailwind', 'DnD'],
-            image: 'https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80',
-            github: '#',
-            demo: '#'
-        },
-        {
-            title: 'Weather Dashboard',
-            description: 'A responsive weather dashboard that displays current weather and forecasts for any location using the OpenWeatherMap API.',
-            tags: ['React', 'API Integration', 'Chart.js'],
-            image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+            title: 'Scam Shield',
+            description: 'Developed a scam email detection platform using TF-IDF text classification with high detection accuracy. Integrated Firebase Authentication for secure user sessions with a responsive ReactJS frontend.',
+            tags: ['ReactJS', 'Firebase', 'TF-IDF', 'Firebase Authentication'],
             github: '#',
             demo: '#'
         }
     ];
 
     return (
-        <section id="projects" className="py-20 bg-zinc-950">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="projects" className="py-20 bg-zinc-900">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -44,7 +34,7 @@ const Projects = () => {
                     <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
@@ -52,33 +42,27 @@ const Projects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-zinc-900 border border-white/5 rounded-xl shadow-lg overflow-hidden hover:shadow-[0_0_20px_rgba(14,165,233,0.1)] transition-all duration-300"
+                            className="bg-zinc-950 border border-white/5 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_20px_rgba(14,165,233,0.15)] hover:border-white/10 transition-all duration-300 relative group"
                         >
-                            <div className="h-48 overflow-hidden">
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                                />
+                            <div className="mb-6 text-primary">
+                                <FolderGit2 className="w-10 h-10 group-hover:text-white transition-colors duration-300" />
                             </div>
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                                <p className="text-zinc-400 mb-4 text-sm line-clamp-3">{project.description}</p>
-                                <div className="flex flex-wrap gap-2 mb-6">
-                                    {project.tags.map((tag) => (
-                                        <span key={tag} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                                <div className="flex gap-4">
-                                    <a href={project.github} className="flex items-center text-zinc-400 hover:text-primary transition-colors text-sm font-medium">
-                                        <Github className="w-4 h-4 mr-1" /> Code
-                                    </a>
-                                    <a href={project.demo} className="flex items-center text-zinc-400 hover:text-primary transition-colors text-sm font-medium">
-                                        <ExternalLink className="w-4 h-4 mr-1" /> Live Demo
-                                    </a>
-                                </div>
+                            <h3 className="text-2xl font-bold text-white mb-4">{project.title}</h3>
+                            <p className="text-zinc-400 mb-8 text-base leading-relaxed">{project.description}</p>
+                            <div className="flex flex-wrap gap-2 mb-8">
+                                {project.tags.map((tag) => (
+                                    <span key={tag} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                            <div className="flex gap-6 mt-auto">
+                                <a href={project.github} className="flex items-center text-zinc-400 hover:text-white transition-colors text-sm font-medium">
+                                    <Github className="w-5 h-5 mr-2" /> Source Code
+                                </a>
+                                <a href={project.demo} className="flex items-center text-zinc-400 hover:text-white transition-colors text-sm font-medium">
+                                    <ExternalLink className="w-5 h-5 mr-2" /> Live Demo
+                                </a>
                             </div>
                         </motion.div>
                     ))}
